@@ -3,12 +3,11 @@
 use strict;
 use warnings;
 
-use Data::Dump;
 use Path::Tiny qw( path );
 use YAML::PP;
 use Getopt::Long;
 use Pod::Usage;
-# use File::Temp
+use Data::Dump;
 
 my $man = 0;
 my $help = 0;
@@ -17,11 +16,6 @@ my $outfile = 'docker-names.yml';
 GetOptions('help|?' => \$help, 'man!' => \$man, 'verbose!' => \$verbose, 'out=s' => \$outfile) or pod2usage(2);
 pod2usage(1) if $help;
 pod2usage(-exitval => 0, -verbose => 2) if $man;
-
-# dd($outfile);
-
-# my $tempfile = File::Temp->new(EXLOCK => 0);
-# my $guts = path($tempfile)->slurp_utf8;
 
 my $code = path('names-generator.go')->slurp_utf8;
 my ($left, $right) = $code =~ m/var \s{1,} \( \s{0,1} \n
@@ -41,16 +35,11 @@ my ($left, $right) = $code =~ m/var \s{1,} \( \s{0,1} \n
     \s{0,} \)
     /x;
 
-# dd($left);
-# dd($right);
-
 my @adjectives;
 while( $left =~ m/ " (?<adjective> [^"]{1,} ) " /gx ) {
     dd($1) if( $verbose );
     push @adjectives, $1;
 }
-
-# dd(\@adjectives);
 
 my @names;
 while ( $right =~ m/
@@ -79,7 +68,6 @@ while ( $right =~ m/
     ($info) = $info =~ m/^ \s* (.*?) \s* $/msx; # Attn. non-greedy qualifier in (.*?)
     push @names, { 'surname' => $surname, 'explanation' => $info, 'link' => $link, };
 }
-# dd(\@names);
 
 my %serialize_me = (
     'adjectives' => [ map { { 'word' => $_ } } @adjectives ],

@@ -18,7 +18,6 @@ our %EXPORT_TAGS = ( 'all' => [qw( docker_name )] );
 
 use YAML::PP;
 use Hash::Util qw( lock_keys );
-use Data::Dump;
 
 =for stopwords overthruster Docker::Names::Random Docker Names Random
 
