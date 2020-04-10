@@ -1,0 +1,4 @@
+# Dist::Zilla builds
+.build
+Docker-Names-Random-*
+
