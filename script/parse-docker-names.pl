@@ -54,12 +54,12 @@ while( $left =~ m/ " (?<adjective> [^"]{1,} ) " /gx ) {
 
 my @names;
 while ( $right =~ m/
-    (?<comments> 
+    (?<comments>
         \s{0,} \/{2} \s{1} [^\n]{1,}
         (?: \n \s{0,} \/{2} \s{1} [^\n]{1,} ){0,}
     )
-    \n 
-    \s{0,} " (?<surname> [^"]{1,} ) " \s{0,} , 
+    \n
+    \s{0,} " (?<surname> [^"]{1,} ) " \s{0,} ,
     /gx ) {
     my $surname = $+{surname};
     dd($1) if ( $verbose );
