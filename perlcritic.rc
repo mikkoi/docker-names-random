@@ -29,8 +29,7 @@ top       = 1000
 #Space-delimited list
 ##exclude   = Variables  Modules::RequirePackage
 ##exclude = ControlStructures::ProhibitPostfixControls
-exclude = Documentation::PodSpelling
-exclude = CodeLayout::RequireTidyCode
+exclude = Documentation::PodSpelling CodeLayout::RequireTidyCode
 
 # Zero or One
 #color     = 1

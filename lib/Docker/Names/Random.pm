@@ -20,7 +20,7 @@ use YAML::PP;
 use Hash::Util qw( lock_keys );
 use Data::Dump;
 
-=for stopwords overthruster
+=for stopwords overthruster Docker::Names::Random Docker Names Random
 
 =head1 STATUS
 
