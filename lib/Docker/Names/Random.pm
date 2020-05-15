@@ -5,6 +5,8 @@ package Docker::Names::Random;
 
 use strict;
 use warnings;
+use 5.010;
+use feature qw( state );
 use utf8;    # The __DATA__ is UTF-8
 use English qw(-no_match_vars);
 
@@ -80,10 +82,9 @@ Create object.
 # Internal functions
 
 sub _get_data {
-    my $ypp = YAML::PP->new;
+    state $ypp = YAML::PP->new;
     local $INPUT_RECORD_SEPARATOR = undef;
-    my $local_data = <DATA>;
-    my ($data) = $ypp->load_string($local_data);
+    state $data = $ypp->load_string(<DATA>);
     return $data;
 }
 
