@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.0.2     2020-05-15 23:42:31+02:00 Europe/Stockholm
             - Fix bug: fails if calling docker_names() a second time.
             - Improve tests.
 
